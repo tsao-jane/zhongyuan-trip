@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>中原行</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Serif+TC:wght@400;600;900&display=swap">
+<style>
+/* Layout: one hand scroll on xuan paper. Ink-wash mountains painted on canvas open the page; each day is
+   headed by its city in giant pale ink on the left margin, timeline on the right; food is a row of hanging
+   wooden menu boards (水牌). Cinnabar is only for seals and the must-do stops. */
+:root{
+  --xuan:#ebe8df;      /* xuan paper, slightly grey */
+  --xuan-deep:#dedacd; /* paper fold / board */
+  --ink:#1b1a17;       /* pine-soot ink */
+  --ink-mid:#4d4a42;
+  --ink-pale:#a7a397;  /* diluted wash */
+  --cinnabar:#ad2a1f;  /* seal paste */
+  --kai:"LXGW WenKai TC","Kaiti TC","STKaiti","BiauKai","DFKai-SB",serif;
+  --song:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--xuan);color:var(--ink);font-family:var(--song);font-size:16px;line-height:1.85}
+.scroll{max-width:780px;margin:0 auto;padding-inline:20px;padding-block:0 72px}
+
+/* hero */
+.hero{position:relative;height:clamp(360px,62vw,470px);margin-inline:-20px}
+#ink{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-text{position:absolute;inset:0;padding:28px 24px;display:flex;justify-content:space-between;align-items:flex-start}
+.title{writing-mode:vertical-rl;font-family:var(--kai);font-weight:700;font-size:clamp(64px,15vw,112px);line-height:1;letter-spacing:.12em;margin:0;color:var(--ink)}
+.colophon{writing-mode:vertical-rl;font-family:var(--kai);font-size:clamp(15px,3.6vw,19px);line-height:2;color:var(--ink-mid);margin:0;letter-spacing:.15em}
+.seal{display:inline-grid;place-items:center;background:var(--cinnabar);color:var(--xuan);font-family:var(--kai);font-weight:700;line-height:1.05;border-radius:3px;box-shadow:inset 0 0 0 2px var(--xuan),inset 0 0 0 3.5px var(--cinnabar)}
+.hero .seal{position:absolute;right:clamp(110px,24vw,170px);top:34px;width:52px;height:52px;font-size:19px;text-align:center;transform:rotate(-4deg);animation:stamp .5s .3s both cubic-bezier(.3,1.6,.6,1)}
+@keyframes stamp{from{transform:scale(1.6) rotate(-4deg);opacity:0}to{transform:scale(1) rotate(-4deg);opacity:1}}
+@media (prefers-reduced-motion:reduce){.hero .seal{animation:none}}
+
+.lede{font-size:17px;max-width:34em;margin:8px 0 0}
+.lede strong{font-weight:600}
+.lodging{margin-top:22px;padding-top:14px;border-top:1px solid var(--ink-pale);display:grid;grid-template-columns:auto 1fr;gap:2px 16px}
+.lodging .k{font-family:var(--kai);font-size:22px;color:var(--cinnabar);line-height:1.5}
+.lodging div{min-width:0}
+.lodging small{display:block;color:var(--ink-mid);font-size:14px}
+
+/* day */
+.day{margin-top:72px;display:grid;grid-template-columns:120px 1fr;gap:0 24px}
+.city{writing-mode:vertical-rl;font-family:var(--kai);font-weight:700;font-size:104px;line-height:1;color:var(--ink-pale);opacity:.55;letter-spacing:.06em;margin:0;justify-self:center;position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);align-self:start}
+.day-body{min-width:0}
+.day-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.day-head .seal{width:48px;height:48px;font-size:15px;text-align:center;flex:none}
+.day h2{font-family:var(--kai);font-weight:700;font-size:clamp(28px,6.4vw,38px);line-height:1.2;margin:0;text-wrap:balance}
+.day .sub{color:var(--ink-mid);margin:0 0 22px;font-size:15px}
+
+.steps{list-style:none;margin:0;padding:0 0 0 22px;display:flex;flex-direction:column;gap:16px;position:relative}
+.steps::before{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:3px;border-radius:2px;background:linear-gradient(var(--ink),var(--ink-pale) 85%,transparent);opacity:.8}
+.steps li{position:relative;display:grid;grid-template-columns:6.2em 1fr;gap:12px}
+.steps li::before{content:"";position:absolute;left:-23px;top:.62em;width:11px;height:11px;border-radius:50%;background:var(--xuan);border:2px solid var(--ink)}
+.steps li.must::before{background:var(--cinnabar);border-color:var(--cinnabar)}
+.t{font-variant-numeric:tabular-nums;color:var(--ink-mid);font-size:14px;padding-top:2px}
+.w{min-width:0}
+.w b{font-weight:900}
+.w .n{display:block;color:var(--ink-mid);font-size:14.5px;line-height:1.7}
+.w .eat{display:block;font-size:14.5px;line-height:1.7;margin-top:2px}
+.w .eat::before{content:"食";font-family:var(--kai);color:var(--cinnabar);margin-right:6px;font-weight:700}
+.aside{margin-top:22px;font-size:15px;color:var(--ink-mid);padding-left:14px;border-left:3px solid var(--ink-pale)}
+
+/* food boards */
+.food{margin-top:88px}
+.food h2,.prep h2{font-family:var(--kai);font-weight:700;font-size:clamp(30px,7vw,42px);margin:0 0 4px}
+.food > p{margin:0 0 26px;color:var(--ink-mid);font-size:15px}
+.food h3{font-family:var(--kai);font-weight:700;font-size:22px;margin:30px 0 14px;display:flex;align-items:center;gap:10px}
+.food h3::after{content:"";flex:1;height:1px;background:var(--ink-pale)}
+.boards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:22px 14px}
+.board{position:relative;padding-top:14px;display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
+.board::before{content:"";position:absolute;top:0;left:50%;width:44px;height:14px;transform:translateX(-50%);border:1.5px solid var(--ink-mid);border-bottom:0;border-radius:22px 22px 0 0}
+.plaque{background:var(--xuan-deep);border:1.5px solid var(--ink);padding:12px 8px;min-height:138px;display:flex;justify-content:center;align-items:center}
+.plaque span{writing-mode:vertical-rl;font-family:var(--kai);font-weight:700;font-size:25px;line-height:1.15;letter-spacing:.06em}
+.board.star .plaque{border-color:var(--cinnabar);box-shadow:inset 0 0 0 3px var(--xuan-deep),inset 0 0 0 4.5px var(--cinnabar)}
+.board p{margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--ink-mid)}
+.board p b{color:var(--ink);font-weight:600}
+.legend{font-size:14px;color:var(--ink-mid);margin-top:20px}
+.legend i{display:inline-block;width:14px;height:14px;border:2px solid var(--cinnabar);vertical-align:-2px;margin-right:6px}
+
+/* prep */
+.prep{margin-top:88px}
+.prep ol{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px;counter-reset:p}
+.prep li{display:grid;grid-template-columns:34px 1fr;gap:10px;counter-increment:p}
+.prep li::before{content:counter(p,cjk-ideographic);font-family:var(--kai);font-weight:700;font-size:22px;color:var(--cinnabar);line-height:1.5}
+.prep li div{min-width:0}
+.ask{margin-top:26px;background:var(--xuan-deep);padding:16px 18px;font-size:15px}
+.ask strong{font-family:var(--kai);font-size:19px}
+.ask ul{margin:8px 0 0;padding-left:1.2em}
+.end{margin-top:72px;text-align:center;color:var(--ink-mid);font-size:13px}
+.end .seal{width:38px;height:38px;font-size:17px;display:grid;margin:0 auto 10px}
+
+@media (max-width:600px){
+  .day{grid-template-columns:1fr}
+  .city{writing-mode:horizontal-tb;position:static;font-size:76px;justify-self:start;margin:0 0 -18px;letter-spacing:.2em}
+  .steps li{grid-template-columns:1fr;gap:0}
+  .boards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+</style>
+</head>
+<body>
+
+<div class="scroll">
+  <header class="hero">
+    <canvas id="ink" aria-hidden="true"></canvas>
+    <div class="hero-text">
+      <p class="colophon">十月九日西安<br>十月十日開封</p>
+      <span class="seal" aria-hidden="true">兩日<br>遊</span>
+      <h1 class="title">中原行</h1>
+    </div>
+  </header>
+
+  <p class="lede">10/8 抵達鄭州，<strong>當天跟朋友自由活動</strong>。之後兩天各跑一個古都：一天去西安看兵馬俑和大唐不夜城，一天去開封清明上河園穿古裝拍照。三晚都住鄭州。</p>
+  <div class="lodging">
+    <span class="k">宿</span>
+    <div><b>鄭州瓦舍城市民宿（同樂地鐵站瀚海海尚店）</b><small>同樂小區南區 67 棟，攜程 4.8 分（604 則評論）</small></div>
+  </div>
+
+  <!-- 西安 -->
+  <section class="day">
+    <p class="city" aria-hidden="true">西安</p>
+    <div class="day-body">
+      <div class="day-head"><span class="seal">十月<br>九日</span><h2>兵馬俑、大唐不夜城</h2></div>
+      <p class="sub">週五。兩天裡最累的一天，天沒亮就出門，回到鄭州已經深夜。</p>
+      <ol class="steps">
+        <li><span class="t">06:30–07:00</span><span class="w"><b>鄭州東站</b>出發往西安北站<span class="n">高鐵約 2–2.5 小時，早餐在車站或車上解決</span></span></li>
+        <li><span class="t">約 09:30</span><span class="w">到西安北站，搭滴滴去兵馬俑，約 1 小時</span></li>
+        <li class="must"><span class="t">10:30–14:00</span><span class="w"><b>秦始皇帝陵博物院（兵馬俑）</b><span class="n">先看一號坑，再看三號坑、二號坑、銅車馬。建議請導覽或租語音導覽</span></span></li>
+        <li><span class="t">14:00</span><span class="w">在景區附近吃午餐<span class="eat">臨潼的<b>黃桂柿子餅</b>現煎現吃，配一碗<b>涼皮</b>或<b>biangbiang 麵</b></span></span></li>
+        <li><span class="t">15:00</span><span class="w">搭滴滴進市區，約 1 小時，去<b>大雁塔</b>（大慈恩寺）</span></li>
+        <li><span class="t">17:30</span><span class="w">在大唐不夜城附近吃晚餐<span class="eat"><b>羊肉泡饃</b>和<b>肉夾饃</b>一定要吃。想一次吃很多種，就去「長安大牌檔」</span></span></li>
+        <li class="must"><span class="t">19:00–20:30</span><span class="w"><b>大唐不夜城</b><span class="n">天黑點燈、街頭表演最熱鬧，邊逛邊吃<b>甑糕</b>、<b>鏡糕</b>，喝一瓶冰峰汽水</span></span></li>
+        <li><span class="t">約 20:45</span><span class="w">從大唐芙蓉園站搭<b>地鐵 4 號線</b>直達西安北站，約 40 分鐘</span></li>
+        <li><span class="t">約 21:30</span><span class="w">搭高鐵回鄭州，大約 23:30 到</span></li>
+      </ol>
+      <p class="aside">最晚的回程車次請先在 12306 確認並買票。如果體力吃不消，可以在西安住一晚，10/10 早上直接從西安北站搭高鐵到開封北站。</p>
+    </div>
+  </section>
+
+  <!-- 開封 -->
+  <section class="day">
+    <p class="city" aria-hidden="true">開封</p>
+    <div class="day-body">
+      <div class="day-head"><span class="seal">十月<br>十日</span><h2>清明上河園、古裝拍照</h2></div>
+      <p class="sub">週六。先在景區外的店化妝換裝，再穿著古裝進園，一路玩到夜市。</p>
+      <ol class="steps">
+        <li><span class="t">07:00</span><span class="w">在鄭州吃早餐<span class="eat"><b>方中山胡辣湯</b>配水煎包，鄭州人的標準早餐</span></span></li>
+        <li><span class="t">08:00</span><span class="w"><b>鄭州東站</b>出發往開封宋城路站<span class="n">約 30 分鐘，下車後搭滴滴去清明上河園</span></span></li>
+        <li class="must"><span class="t">09:00–10:30</span><span class="w"><b>古裝店換裝、化妝</b><span class="n">約 1–1.5 小時。推薦宋制漢服，跟清明上河園最搭</span></span></li>
+        <li class="must"><span class="t">10:30–17:30</span><span class="w"><b>清明上河園</b><span class="n">入園後先拿表演時刻表，水上實景戲、岳飛槍挑小梁王等表演都很適合當背景</span></span></li>
+        <li><span class="t">中午</span><span class="w">穿著古裝在園內吃<span class="eat">園內有宋代風格的小吃街，<b>灌湯包</b>、<b>花生糕</b>都買得到</span></span></li>
+        <li><span class="t">18:00</span><span class="w">還裝，或直接穿著去<b>鼓樓夜市</b><span class="eat"><b>桶子雞</b>、<b>炒涼粉</b>、<b>杏仁茶</b>、<b>羊肉炕饃</b>、<b>紅薯泥</b>，一攤一攤吃過去</span></span></li>
+        <li><span class="t">約 20:30</span><span class="w">搭車回鄭州<span class="n">末班車時間先在 12306 確認</span></span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 食單 -->
+  <section class="food">
+    <h2>食單</h2>
+    <p>兩座城加上鄭州，值得特地去吃的東西。紅框是我最推薦、一定要吃的。</p>
+
+    <h3>西安</h3>
+    <div class="boards">
+      <div class="board star"><div class="plaque"><span>羊肉泡饃</span></div><p>饃要自己掰成小塊再煮。<b>老孫家、同盛祥</b></p></div>
+      <div class="board star"><div class="plaque"><span>肉夾饃</span></div><p>臘汁肉夾在白吉饃裡，<b>樊記</b>最有名</p></div>
+      <div class="board"><div class="plaque"><span>油潑麵</span></div><p>寬麵淋熱油辣子，也叫 biangbiang 麵</p></div>
+      <div class="board"><div class="plaque"><span>涼皮</span></div><p><b>魏家涼皮</b>連鎖店到處都有，在車站也能吃</p></div>
+      <div class="board"><div class="plaque"><span>柿子餅</span></div><p>黃桂柿子餅，臨潼特產，兵馬俑附近就買得到</p></div>
+      <div class="board"><div class="plaque"><span>甑糕</span></div><p>糯米、紅棗加芸豆蒸成，很適合邊走邊吃</p></div>
+    </div>
+
+    <h3>開封</h3>
+    <div class="boards">
+      <div class="board star"><div class="plaque"><span>灌湯包</span></div><p>先開窗、後喝湯。<b>第一樓、黃家包子</b></p></div>
+      <div class="board star"><div class="plaque"><span>鯉魚焙麵</span></div><p>開封名菜，糖醋鯉魚上面蓋一層細如髮絲的焙麵</p></div>
+      <div class="board"><div class="plaque"><span>桶子雞</span></div><p>老字號<b>馬豫興</b>，鹹香不油，可以帶回鄭州當宵夜</p></div>
+      <div class="board"><div class="plaque"><span>杏仁茶</span></div><p>夜市必看，攤主用長嘴銅壺表演沖茶</p></div>
+      <div class="board"><div class="plaque"><span>炒涼粉</span></div><p>煎到焦香，夜市每一攤都有</p></div>
+      <div class="board"><div class="plaque"><span>花生糕</span></div><p>入口酥鬆，適合買來當伴手禮</p></div>
+    </div>
+
+    <h3>鄭州</h3>
+    <div class="boards">
+      <div class="board star"><div class="plaque"><span>胡辣湯</span></div><p>胡椒味很重的勾芡湯，早餐吃。<b>方中山</b></p></div>
+      <div class="board star"><div class="plaque"><span>燴麵</span></div><p>羊肉湯配寬麵片。<b>合記、蕭記</b>，跟朋友吃剛好</p></div>
+      <div class="board"><div class="plaque"><span>水煎包</span></div><p>底部煎得酥脆，配胡辣湯吃</p></div>
+    </div>
+    <p class="legend"><i></i>紅框代表最推薦</p>
+  </section>
+
+  <!-- 出發前 -->
+  <section class="prep">
+    <h2>出發前要辦</h2>
+    <ol>
+      <li><div><b>買高鐵票（12306）</b>：10/9 鄭州東站往返西安北站，加上 10/10 鄭州往返開封。收假前後車票很搶。</div></li>
+      <li><div><b>預約兵馬俑門票</b>：用「秦始皇帝陵博物院」官方微信小程序實名預約，可以用台胞證。網路約不到的話，現場有港澳台窗口。</div></li>
+      <li><div><b>預約古裝店</b>：週六很搶。到小紅書或大眾點評搜「清明上河園 漢服 妝造」，挑評論多、有買家上傳原圖的店。</div></li>
+      <li><div><b>確認民宿交通</b>：查民宿到鄭州東站要多久，也先問 10/9 晚上大約 23:30 回到時要怎麼進門。</div></li>
+    </ol>
+    <div class="ask">
+      <strong>預約古裝店時，先問清楚</strong>
+      <ul>
+        <li>店的地址，離清明上河園哪個門多遠</li>
+        <li>套餐包含幾張精修、底片是否全送、加修一張多少錢</li>
+        <li>攝影師會跟拍進園，還是只在店內拍</li>
+        <li>服裝可以穿到幾點、能不能穿進景區</li>
+        <li>頭飾和服裝有沒有分等級加價、訂金能不能退</li>
+        <li>能不能看客人沒修過的原圖</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="end">
+    <span class="seal" aria-hidden="true">遊</span>
+    車次時間都是預估的，以 12306 實際班次為準
+  </footer>
+</div>
+
+<script>
+(function(){
+  var c=document.getElementById('ink'); if(!c||!c.getContext) return;
+  var ctx=c.getContext('2d');
+  function rng(seed){return function(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646;}}
+  function draw(){
+    var dpr=Math.min(window.devicePixelRatio||1,2), w=c.clientWidth, h=c.clientHeight;
+    c.width=w*dpr; c.height=h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,w,h);
+    var r=rng(97);
+    // moon
+    ctx.fillStyle='rgba(173,42,31,.78)'; ctx.beginPath(); ctx.arc(w*.42,h*.2,Math.min(w,h)*.06,0,Math.PI*2); ctx.fill();
+    var layers=[{base:.55,amp:.28,a:.10,blur:10,step:26},{base:.68,amp:.24,a:.20,blur:5,step:18},{base:.82,amp:.18,a:.42,blur:2,step:12}];
+    layers.forEach(function(L,li){
+      for(var pass=0;pass<3;pass++){
+        ctx.save(); ctx.filter='blur('+(L.blur+pass*2)+'px)';
+        var g=ctx.createLinearGradient(0,h*(L.base-L.amp),0,h);
+        g.addColorStop(0,'rgba(27,26,23,'+(L.a*(1-pass*.25))+')'); g.addColorStop(1,'rgba(27,26,23,0)');
+        ctx.fillStyle=g; ctx.beginPath(); ctx.moveTo(-40,h+20);
+        var peaks=[]; for(var p=0;p<3+li;p++) peaks.push({x:r()*w,s:.6+r()*.6,wd:w*(.12+r()*.18)});
+        for(var x=-40;x<=w+40;x+=L.step){
+          var y=h*L.base;
+          peaks.forEach(function(pk){var d=(x-pk.x)/pk.wd; y-=h*L.amp*pk.s*Math.exp(-d*d);});
+          y+= (r()-.5)*h*.025;
+          ctx.lineTo(x,y);
+        }
+        ctx.lineTo(w+40,h+20); ctx.closePath(); ctx.fill(); ctx.restore();
+      }
+    });
+    // mist band
+    var m=ctx.createLinearGradient(0,h*.7,0,h); m.addColorStop(0,'rgba(235,232,223,0)'); m.addColorStop(1,'rgba(235,232,223,1)');
+    ctx.fillStyle=m; ctx.fillRect(0,h*.7,w,h*.3);
+  }
+  draw(); var t; window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(draw,150);});
+})();
+</script>
+</body>
+</html>
