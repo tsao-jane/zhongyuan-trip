@@ -82,6 +82,20 @@ body{margin:0;background:var(--xuan);color:var(--ink);font-family:var(--song);fo
 .legend{font-size:14px;color:var(--ink-mid);margin-top:20px}
 .legend i{display:inline-block;width:14px;height:14px;border:2px solid var(--cinnabar);vertical-align:-2px;margin-right:6px}
 
+/* lore */
+.lore{margin-top:88px}
+.lore h2{font-family:var(--kai);font-weight:700;font-size:clamp(30px,7vw,42px);margin:0 0 4px}
+.lore > p{margin:0 0 8px;color:var(--ink-mid);font-size:15px}
+.site{margin-top:34px;display:grid;grid-template-columns:120px 1fr;gap:0 24px}
+.site h3{font-family:var(--kai);font-weight:700;font-size:26px;line-height:1.25;margin:0;text-wrap:balance}
+.site h3 small{display:block;font-size:15px;font-weight:400;color:var(--ink-mid);margin-top:4px}
+.site-body{min-width:0}
+.site ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px}
+.site li::marker{color:var(--ink-pale)}
+.look{margin-top:12px;background:var(--xuan-deep);padding:10px 14px;font-size:15px}
+.look b:first-child{font-family:var(--kai);color:var(--cinnabar);margin-right:6px}
+@media (max-width:600px){.site{grid-template-columns:1fr;gap:8px}}
+
 /* prep */
 .prep{margin-top:88px}
 .prep ol{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px;counter-reset:p}
@@ -161,6 +175,76 @@ body{margin:0;background:var(--xuan);color:var(--ink);font-family:var(--song);fo
         <li class="must"><span class="t">21:24</span><span class="w"><b>C2893</b> 宋城路站 → 鄭州東站，21:53 到</span></li>
       </ol>
       <p class="aside">如果累了想早點走，20:51（C2959）和 21:06（C2909）都有車。萬一沒趕上 21:24 這班，後面還有 <b>C2991</b>：21:55 從宋城路站出發，22:25 到鄭州東站。</p>
+    </div>
+  </section>
+
+  <!-- 看點 -->
+  <section class="lore">
+    <h2>看點</h2>
+    <p>先知道背後的故事，到現場會好看很多。</p>
+
+    <div class="site">
+      <h3>兵馬俑<small>秦始皇帝陵博物院</small></h3>
+      <div class="site-body">
+        <ul>
+          <li><b>1974 年被農民挖井時意外發現</b>，是秦始皇陵的陪葬坑，1987 年列入世界遺產。</li>
+          <li><b>一號坑</b>最大，估計埋了約 6000 尊陶俑和戰馬，目前只挖出一部分，排成步兵和戰車的軍陣。</li>
+          <li><b>二號坑</b>是弓弩手、騎兵、戰車混合的部隊。最有名的<b>跪射俑</b>就出自這裡，是少數出土時幾乎完整、不用修復的陶俑。</li>
+          <li><b>三號坑</b>最小，被認為是整支軍隊的指揮部。</li>
+          <li><b>陶俑原本是彩色的</b>。顏料一接觸空氣，幾分鐘內就會褪色剝落，這也是考古一直挖得很慢的原因。</li>
+          <li><b>銅車馬</b>是兩輛約真實尺寸一半的青銅馬車，做工非常精細，連韁繩、窗戶都能活動。</li>
+          <li><b>秦始皇的主墓到現在都還沒有挖開</b>。《史記》記載墓裡用水銀做成江河大海，考古人員也真的在封土裡測到水銀濃度異常。</li>
+        </ul>
+        <p class="look"><b>現場找找看</b>每尊陶俑的臉都不一樣，有人說是照真實士兵的長相做的。找找看有沒有長得像你朋友的。</p>
+      </div>
+    </div>
+
+    <div class="site">
+      <h3>大雁塔<small>大慈恩寺</small></h3>
+      <div class="site-body">
+        <ul>
+          <li>大慈恩寺是唐高宗李治還是太子時，為了紀念母親文德皇后而建的。</li>
+          <li><b>大雁塔由玄奘法師主持興建</b>，用來存放他從印度取回的佛經和佛像。玄奘就是《西遊記》裡唐僧的原型。</li>
+          <li>唐朝考上進士的人會到塔下題名，叫做<b>「雁塔題名」</b>，是當時讀書人最風光的事。</li>
+        </ul>
+        <p class="look"><b>現場找找看</b>大雁塔有點往西北方向傾斜，從北廣場遠看比較明顯。</p>
+      </div>
+    </div>
+
+    <div class="site">
+      <h3>大唐不夜城</h3>
+      <div class="site-body">
+        <ul>
+          <li>從大雁塔往南延伸、約 2 公里長的唐朝主題步行街。西安在唐朝叫做<b>長安</b>，是當時世界上最大的城市之一。</li>
+          <li>街上整晚都有唐風表演和裝置藝術。2019 年爆紅的<b>「不倒翁小姐姐」</b>表演就是在這裡。</li>
+        </ul>
+        <p class="look"><b>現場找找看</b>街上有不少李白、杜甫等唐朝詩人的雕像和詩句，看看能認出幾首。</p>
+      </div>
+    </div>
+
+    <div class="site">
+      <h3>開封<small>北宋的首都</small></h3>
+      <div class="site-body">
+        <ul>
+          <li>開封是<b>八朝古都</b>，最輝煌的時候是北宋，當時叫做<b>東京</b>或<b>汴京</b>，人口超過百萬，是當時世界上最繁華的城市之一。</li>
+          <li><b>「城摞城」</b>：黃河多次氾濫，把舊城一層層埋在地下，開封地底下疊了好幾個朝代的城市。</li>
+          <li>包青天<b>包拯</b>真的當過開封府的長官，所以開封到處都看得到包公的故事。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site">
+      <h3>清明上河園</h3>
+      <div class="site-body">
+        <ul>
+          <li>照著北宋畫家<b>張擇端</b>的名畫<b>〈清明上河圖〉</b>蓋出來的主題公園，1998 年開園。</li>
+          <li>〈清明上河圖〉是一幅 5 公尺多長的長卷，畫的就是北宋汴京沿著汴河的熱鬧街景。真跡收藏在北京故宮博物院。</li>
+          <li>園區裡的<b>虹橋</b>，就是畫中最有名的那座木造拱橋。</li>
+          <li>表演「岳飛槍挑小梁王」的故事出自小說《說岳全傳》，是民間傳說，不是真實歷史。</li>
+          <li>你們要畫的<b>珍珠妝</b>，靈感來自宋代皇后畫像。畫像裡的皇后臉上貼著一顆顆小珍珠。</li>
+        </ul>
+        <p class="look"><b>現場找找看</b>在虹橋上拍一張，回去跟〈清明上河圖〉裡的虹橋對照看看。</p>
+      </div>
     </div>
   </section>
 
